@@ -23,11 +23,9 @@ angular.module('main')
         console.error(err);
         vm.inserterror = err;
       });
-    };
 
-    vm.select = function () {
       vm.selectresult = 'before select my.db';
-      var query = 'SELECT url FROM Expense';
+      query = 'SELECT url FROM Expense';
       $cordovaSQLite.execute(db, query).then(function (res) {
         if (res.rows.length > 0)
         {
@@ -41,6 +39,24 @@ angular.module('main')
         vm.selectresult = err;
         console.error(err);
       });
+    };
+
+    vm.select = function () {
+      //vm.selectresult = 'before select my.db';
+      //var query = 'SELECT url FROM Expense';
+      //$cordovaSQLite.execute(db, query).then(function (res) {
+      //  if (res.rows.length > 0)
+      //  {
+      //    console.log('SELECTED ->' + res.rows.item(0).url);
+      //    vm.selectresult = 'SELECTED' + res.rows.item(0).url;
+      //  }else {
+      //    vm.createresult3 = 'No results found';
+      //    console.log('No results found');
+      //  }
+      //}, function (err) {
+      //  vm.selectresult = err;
+      //  console.error(err);
+      //});
     };
 
     vm.delete = function () {
