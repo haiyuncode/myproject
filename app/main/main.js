@@ -53,6 +53,24 @@ angular.module('main', [
           }
         }
       })
+      .state('main.receipt', {
+        url: '/receipt',
+        views: {
+          'pageContent': {
+            templateUrl: 'main/templates/receipt.html',
+            controller: 'ReceiptCtrl as ctrl'
+          }
+        }
+      })
+      .state('main.database', {
+        url: '/database',
+        views: {
+          'pageContent': {
+            templateUrl: 'main/templates/database.html',
+            controller: 'DataBaseCtrl as ctrl'
+          }
+        }
+      })
       .state('main.debug', {
         url: '/debug',
         views: {

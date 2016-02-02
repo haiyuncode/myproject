@@ -1,0 +1,36 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "test.compan.project"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "test.compan.project"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "test.compan.project"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "test.compan.project"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "test.compan.project"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "test.compan.project"
+        },
+        "com.synconset.imagepicker": {
+            "PACKAGE_NAME": "test.compan.project"
+        },
+        "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "test.compan.project"
+        }
+    },
+    "dependent_plugins": {}
+}

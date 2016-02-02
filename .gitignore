@@ -4,19 +4,16 @@
 .sass-cache
 
 # npm & bower
-/node_modules/
-/app/bower_components/
+
+
 
 # custom gulp settings
-/gulp/.gulp_settings.json
+
 
 # ionic fonts
-/app/main/assets/fonts/ionicons.*
 
-# cordova
-/platforms/
-/plugins/
-/res/*/current/
+
+
 
 # build folder
 /www/**
