@@ -1,46 +1,53 @@
 
 <ion-view title="Camera">
-    <ion-content class="has-header padding">
-        <div class="row">
-            <div class="col">
-                <button class="button  button-balanced" ng-click="ctrl.takePicture()">Take Picture</button>
-            </div>
-            <div class="col">
-                <button class="button  button-balanced" ng-click="ctrl.selectPicture()">Select Picture</button>
-            </div>
+  <ion-content class="has-header padding">
+    <div class="row">
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.takePicture()">Take Picture</button>
+      </div>
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.selectPicture()">Select Picture</button>
+      </div>
 
-            <div class="col">
-              <button class="button  button-balanced" ng-click="ctrl.displayExif()">Display Exif</button>
-            </div>
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.displayExif()">Display Exif</button>
+      </div>
 
-             <!--<div class="col">-->
-                <!--<img src="">-->
-                <!--<button class="button  button-balanced" ng-click="ctrl.createBlob()">Create Blob</button>-->
-            <!--</div>-->
-        </div>
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.createBlob()">Create Blob</button>
+      </div>
 
-        <div class="card">
-                <pre>{{ctrl | json}}</pre>
-        </div>
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.getOriginalImgDataUrl()">Get Original Img DataUrl</button>
+      </div>
+    </div>
 
-        <div class="card">
-            <div class="item item-image">
-                <!--<img ng-src="{{ctrl.imgSrc}}" />-->
-              <img ng-src="{{ctrl.newImgSrc}}" />
-            </div>
-            <div class="item item-image">
-                <img ng-src= "{{ctrl.newsource}}" >
-            </div>
-            <div>
-              <img src="main/assets/images/DSC_0333.JPG" alt="" id="testImg" ng-click="ctrl.displayExif()">
-            </div>
-           <!--  <div class="item">
-                Canvas below:
-            </div> -->
-           <!--  <div class="item">
-                <canvas id="picCanvas" style="width: 120px; height: 120px"></canvas>
-            </div> -->
-        </div>
+    <div class="card">
+      <!--<pre>{{ctrl | json}}</pre>-->
+    </div>
 
-    </ion-content>
+    <div class="card">
+      <div class="item item-image">
+        <!--<img ng-src="{{ctrl.imgSrc}}" />-->
+        <img ng-src="{{ctrl.newImgSrc}}" />
+      </div>
+      <div class="item item-image">
+        <img ng-src= "{{ctrl.newsource}}" >
+      </div>
+      <!--<div>-->
+        <!--<img src="main/assets/images/test.jpeg" alt="" id="testImg" ng-click="ctrl.displayExif()">-->
+      <!--</div>-->
+
+      <div>
+        <img ng-src="{{ctrl.compressedImgSrc}}" alt="" id="compressedImg" ng-click="ctrl.displayExif()">
+      </div>
+      <!--  <div class="item">
+           Canvas below:
+       </div> -->
+      <!--  <div class="item">
+           <canvas id="picCanvas" style="width: 120px; height: 120px"></canvas>
+       </div> -->
+    </div>
+
+  </ion-content>
 </ion-view>

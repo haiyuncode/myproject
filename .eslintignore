@@ -8,5 +8,7 @@ app/bower_components
 # ignore camera-ctrol.js
 # **/camera-ctrl.
 
-# ignore cordova-exif.js
+# ignore .js in the lib folder
+**/exif.js
+**/ExifRestorer.js
 **/cordova-exif.js
