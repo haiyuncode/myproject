@@ -9,10 +9,14 @@
                 <button class="button  button-balanced" ng-click="ctrl.selectPicture()">Select Picture</button>
             </div>
 
-             <div class="col">
-                <img src="">
-                <button class="button  button-balanced" ng-click="ctrl.createBlob()">Create Blob</button>
+            <div class="col">
+              <button class="button  button-balanced" ng-click="ctrl.displayExif()">Display Exif</button>
             </div>
+
+             <!--<div class="col">-->
+                <!--<img src="">-->
+                <!--<button class="button  button-balanced" ng-click="ctrl.createBlob()">Create Blob</button>-->
+            <!--</div>-->
         </div>
 
         <div class="card">
@@ -26,6 +30,9 @@
             </div>
             <div class="item item-image">
                 <img ng-src= "{{ctrl.newsource}}" >
+            </div>
+            <div>
+              <img src="main/assets/images/DSC_0333.JPG" alt="" id="testImg" ng-click="ctrl.displayExif()">
             </div>
            <!--  <div class="item">
                 Canvas below:

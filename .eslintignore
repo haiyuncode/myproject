@@ -6,4 +6,7 @@
 app/bower_components
 
 # ignore camera-ctrol.js
-# **/camera-ctrl.js
+# **/camera-ctrl.
+
+# ignore cordova-exif.js
+**/cordova-exif.js

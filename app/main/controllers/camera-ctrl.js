@@ -1,9 +1,22 @@
 'use strict';
 angular.module('main')
-/*global Camera, cordova, CameraPopoverOptions*/
+/*global Camera, cordova, CameraPopoverOptions, CordovaExif, EXIF*/
 .controller('CameraCtrl', function ($cordovaCamera, $scope, $cordovaFile, $cordovaFileTransfer) {
 
   //document.addEventListener('deviceready', function () {var vm = this;
+
+  //document.getElementById('testImg').onclick = function () {
+  //
+  //  EXIF.getData(this, function () {
+  //    var make = EXIF.getTag(this, 'Make'),
+  //      model = EXIF.getTag(this, 'Model'),
+  //      dataTime = EXIF.getTag(this, 'DateTimeOriginal')
+  //
+  //    console.log('I was taken by a ' + make + ' ' + model + ' ' + dataTime);
+  //  });
+  //
+  //};
+
   var vm = this;
   vm.takePicture = function () {
     var options = {
@@ -126,6 +139,21 @@ angular.module('main')
     theBlob.lastModifiedDate = new Date();
     theBlob.name = fileName;
     return theBlob;
+  };
+
+  vm.displayExif = function () {
+    var url = 'main/assets/images/DSC_0333.JPG';
+
+    //CordovaExif.readData(url, function (exifObject) {
+    //  console.log(exifObject);
+    //});
+    var img = new Image();
+    img.src = url;
+    EXIF.getData(img, function () {
+      var make = EXIF.getTag(img, 'Make'),
+        model = EXIF.getTag(img, 'Model');
+      console.log('I was taken by a ' + make + ' ' + model);
+    });
   };
 
   vm.createBlob = function ()
