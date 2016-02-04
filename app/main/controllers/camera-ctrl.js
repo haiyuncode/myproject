@@ -3,20 +3,6 @@ angular.module('main')
 /*global Camera, cordova, CameraPopoverOptions, CordovaExif, EXIF, ExifRestorer*/
   .controller('CameraCtrl', function ($cordovaCamera, $scope, $cordovaFile, $cordovaFileTransfer) {
 
-    //document.addEventListener('deviceready', function () {var vm = this;
-
-    //document.getElementById('testImg').onclick = function () {
-    //
-    //  EXIF.getData(this, function () {
-    //    var make = EXIF.getTag(this, 'Make'),
-    //      model = EXIF.getTag(this, 'Model'),
-    //      dataTime = EXIF.getTag(this, 'DateTimeOriginal')
-    //
-    //    console.log('I was taken by a ' + make + ' ' + model + ' ' + dataTime);
-    //  });
-    //
-    //};
-
     var vm = this;
 
     vm.takePicture = function () {
@@ -39,7 +25,7 @@ angular.module('main')
 
 
         // Now start image manipulation
-        vm.imgSrc = imageUri;
+        //vm.imgSrc = imageUri;
         var tempImg = new Image();
         tempImg.src = imageUri;
         tempImg.onload = function () {
@@ -76,63 +62,179 @@ angular.module('main')
           var ctx = canvas.getContext('2d');
           // Take image from top left corner to bottom right corner and draw the image
           // on canvas to completely fill into.
-          ctx.drawImage(this, 0, 0, tempImg.width, tempImg.height, 0, 0, targetWidth, targetHeight);
+          //ctx.drawImage(this, 0, 0, tempImg.width, tempImg.height, 0, 0, targetWidth, targetHeight);
+          ctx.drawImage(this, 0, 0, tempImg.width, tempImg.height, 0, 0, 200, 300);
           vm.longSideMax = longSideMax;
           vm.targetHeight = targetHeight;
           vm.targetWidth = targetWidth;
           var dataUrl = canvas.toDataURL('image/jpeg', 0.5);
-          vm.newImgSource = dataUrl;
 
-          try {
+          var tempPath = cordova.file.externalRootDirectory + '/Android/data/test.compan.project/cache/';
+          var name = vm.getImageName(imageUri);
 
-            var byteString;
-            if (dataUrl.split(',')[0].indexOf('base64') >= 0)
-            {
-              byteString = atob(dataUrl.split(',')[1]);
-            }
-            else {
-              byteString = unescape(dataUrl.split(',')[1]);
-            }
-
-            var mimeString = dataUrl.split(',')[0].split(':')[1].split(';')[0];
-
-            // write the bytes of the string to a typed array
-            var ia = new Uint8Array(byteString.length);
-            for (var i = 0; i < byteString.length; i++) {
-              ia[i] = byteString.charCodeAt(i);
-            }
-
-            var myBlob = new Blob([ia], { type: mimeString});
-            vm.myBlob = myBlob;
-
-            var myFile = vm.blobToFile(vm.myBlob, 'test.jpeg');
-            vm.myFile = myFile;
-
-
-            // WRITE
-            //writeFile(path, file, data, replace)
-            var filePath = cordova.file.externalRootDirectory + '/Pictures/';
-            vm.filePath = filePath;
-            //$cordovaFile.writeFile(filePath, "file.txt", "text", true)
-            $cordovaFile.writeFile(filePath, 'test.jpeg', vm.myBlob, true)
-              .then(function (success) {
-                vm.status = 'Wrote to a file';
-              }, function (error) {
-                // error
-              });
-
-          }
-          catch (e)
+          //This function get original image's dataurl
+          //vm.convertTest(tempPath, name, function (imageDataUrl)
+          vm.convertFileToDataURLviaFileReader2(imageUri, function (base64Img)
           {
-            //console.log(e);
-            vm.error = 'error';
-          }
+            var testUrl = dataUrl;
+            //Restore image's exif data
+            var appliedExif = ExifRestorer.restore(base64Img, testUrl);
+            //vm.imgSrc = imageDataUrl;
+
+            try {
+              var byteString;
+              if (dataUrl.split(',')[0].indexOf('base64') >= 0)
+              {
+                byteString = atob(dataUrl.split(',')[1]);
+              }
+              else {
+                byteString = unescape(dataUrl.split(',')[1]);
+              }
+
+              var mimeString = dataUrl.split(',')[0].split(':')[1].split(';')[0];
+
+              // write the bytes of the string to a typed array
+              var ia = new Uint8Array(byteString.length);
+              for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+              }
+
+              var myBlob = new Blob([ia], { type: mimeString});
+              vm.myBlob = myBlob;
+
+              var myFile = vm.blobToFile(vm.myBlob, 'test.jpeg');
+              vm.myFile = myFile;
+
+
+              // WRITE
+              //writeFile(path, file, data, replace)
+              var filePath = cordova.file.externalRootDirectory + '/Pictures/';
+              vm.filePath = filePath;
+              //$cordovaFile.writeFile(filePath, "file.txt", "text", true)
+              $cordovaFile.writeFile(filePath, 'test.jpeg', vm.myBlob, true)
+                .then(function (success) {
+                  vm.status = 'Wrote to a file';
+                }, function (error) {
+                  // error
+                });
+
+
+            }
+            catch (e)
+            {
+              //console.log(e);
+              vm.error = 'error';
+            }
+          });
+
+
         };
 
       }, function (err) {
         alert('An error occured: ' + err);
-        vm.status = 'error';
+        vm.status = err;
       });
+    };
+
+
+    vm.convertFileToDataURLviaFileReader = function (url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function () {
+        var reader  = new FileReader();
+        reader.onloadend = function () {
+          callback(reader.result);
+        };
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', url);
+      xhr.send();
+    };
+
+    vm.stringToArrayBuffer =  function (str) {
+      var buf = new ArrayBuffer(str.length);
+      var bufView = new Uint8Array(buf);
+
+      for (var i = 0, strLen = str.length; i < strLen; i++ ) {
+        bufView[i] = str.charCodeAt(i);
+      }
+      return buf;
+    };
+
+    vm.convertFileToDataURLviaFileReader2 = function (url, callback) {
+      var xhr = new XMLHttpRequest();
+      //xhr.responseType = 'blob';
+      xhr.onload = function () {
+        var reader  = new FileReader();
+        reader.onloadend = function () {
+          var data = vm.stringToArrayBuffer(reader.result);
+          callback(data);
+        };
+        reader.readAsDataURL(xhr.response);
+      };
+      xhr.open('GET', url);
+      xhr.send();
+    };
+
+
+    vm.getImageName = function (url)
+    {
+      vm.imagenameurl = url;
+      var name = url.substr(url.lastIndexOf('/') + 1);
+      vm.name = name;
+      return name;
+    };
+
+    //Name should be changed to get iamge data url later
+    vm.convertTest = function (filePath, name, callback)
+    {
+      vm.pathandname = 'Path ' + filePath + ' name ' + name;
+      $cordovaFile.readAsDataURL(filePath, name)
+        .then(function (success) {
+          callback(success);
+        }, function (error) {
+          vm.error = error;
+        });
+    };
+
+    //Version 2
+    vm.convertFileToDataURL = function (file)
+    {
+
+      vm.file = file;
+      try {
+        var reader = new FileReader();
+
+        vm.filereader = reader;
+
+        reader.readAsDataURL(file);
+
+        vm.reader = 'read the file now';
+
+        reader.onload = function (event) {
+          $scope.$apply();
+          vm.onload = 'convert onload';
+          vm.result = event.target.result;
+          //var blob = vm.dataURItoBlob(event.target.result); // create blob...new version
+          //window.URL = window.URL || window.webkitURL;
+          //var blobURL = window.URL.createObjectURL(blob); // and get it's URL
+          //vm.msg = blobURL;
+        };
+      }
+      catch (e)
+      {
+        vm.error = e;
+      }
+    };
+
+    vm.dataURItoBlob = function (dataURI)
+    {
+      var binary = atob(dataURI.split(',')[1]);
+      var array = [];
+      for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
     };
 
     vm.blobToFile = function (theBlob, fileName) {
@@ -158,20 +260,6 @@ angular.module('main')
           datetime = EXIF.getTag(img, 'DateTime');
         console.log('I was taken by a ' + make + ' ' + model + ' Orientation ' + orientation + ' DateTime' + datetime);
       });
-    };
-
-    vm.convertFileToDataURLviaFileReader = function (url, callback) {
-      var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function () {
-        var reader  = new FileReader();
-        reader.onloadend = function () {
-          callback(reader.result);
-        };
-        reader.readAsDataURL(xhr.response);
-      };
-      xhr.open('GET', url);
-      xhr.send();
     };
 
     vm.getOriginalImgDataUrl = function () {
@@ -265,17 +353,28 @@ angular.module('main')
         destinationType: Camera.DestinationType.FILE_URI,
         sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
         // allowEdit: true,
-        targetWidth: 882,
-        targetHeight: 1500
+        //targetWidth: 882,
+        //targetHeight: 1500
       };
 
       $cordovaCamera.getPicture(options).then(function (imageUri) {
         // Success! Image data is here
         vm.imgSrc = imageUri;
-        vm.status = 'select picture succeed';
+
+        try {
+          var file = new File(imageUri);
+          vm.createfile = 'file object created';
+        } catch (e)
+        {
+          vm.error = e;
+        }
+        //Test convert file to data url via file reader api
+        var filePath = cordova.file.externalRootDirectory + '/Pictures/';
+       // vm.convertTest( filePath, vm.getImageName(imageUri));
+
       }, function (err) {
         alert('An error occured: ' + err);
-        vm.status = 'select picture failed';
+        vm.error = err;
       });
     };
 

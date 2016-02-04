@@ -9,31 +9,33 @@
         <button class="button  button-balanced" ng-click="ctrl.selectPicture()">Select Picture</button>
       </div>
 
-      <div class="col">
-        <button class="button  button-balanced" ng-click="ctrl.displayExif()">Display Exif</button>
-      </div>
+      <!--<div class="col">-->
+        <!--<button class="button  button-balanced" ng-click="ctrl.displayExif()">Display Exif</button>-->
+      <!--</div>-->
 
       <div class="col">
         <button class="button  button-balanced" ng-click="ctrl.createBlob()">Create Blob</button>
       </div>
 
+      <!--<div class="col">-->
+        <!--<button class="button  button-balanced" ng-click="ctrl.getOriginalImgDataUrl()">Get Original Img DataUrl</button>-->
+      <!--</div>-->
+
       <div class="col">
-        <button class="button  button-balanced" ng-click="ctrl.getOriginalImgDataUrl()">Get Original Img DataUrl</button>
+        <button class="button  button-balanced" ng-click="ctrl.convertTest()">Convert Test</button>
       </div>
     </div>
 
     <div class="card">
-      <!--<pre>{{ctrl | json}}</pre>-->
+      <pre>{{ctrl | json}}</pre>
     </div>
 
     <div class="card">
       <div class="item item-image">
-        <!--<img ng-src="{{ctrl.imgSrc}}" />-->
-        <img ng-src="{{ctrl.newImgSrc}}" />
+        <img ng-src="{{ctrl.imgSrc}}" />
+
       </div>
-      <div class="item item-image">
-        <img ng-src= "{{ctrl.newsource}}" >
-      </div>
+
       <!--<div>-->
         <!--<img src="main/assets/images/test.jpeg" alt="" id="testImg" ng-click="ctrl.displayExif()">-->
       <!--</div>-->
