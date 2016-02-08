@@ -39,6 +39,10 @@
                         {
                             "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.liteglue.SQLitePlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -597,6 +601,9 @@
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "test.compan.project"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "test.compan.project"
         }
     },
     "dependent_plugins": {},
@@ -853,6 +860,15 @@
             "clobbers": [
                 "SQLitePlugin"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+            "id": "cordova-plugin-inappbrowser.inappbrowser",
+            "pluginId": "cordova-plugin-inappbrowser",
+            "clobbers": [
+                "cordova.InAppBrowser.open",
+                "window.open"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -863,6 +879,7 @@
         "cordova-plugin-file": "4.1.0",
         "cordova-plugin-file-transfer": "1.5.0",
         "com.synconset.imagepicker": "1.0.7",
-        "cordova-sqlite-storage": "0.7.15-pre"
+        "cordova-sqlite-storage": "0.7.15-pre",
+        "cordova-plugin-inappbrowser": "1.2.2-dev"
     }
 }

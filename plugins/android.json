@@ -30,6 +30,9 @@
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "test.compan.project"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "test.compan.project"
         }
     },
     "dependent_plugins": {}

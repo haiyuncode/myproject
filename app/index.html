@@ -1,14 +1,17 @@
 <!doctype html>
 <html>
   <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
     <meta charset="utf-8">
     <meta name="description" content="">
+
     <!-- ionic meta tags -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <!-- custom meta tags -->
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Test</title>
+
+    <title>Test</title> <!-- -->
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -52,6 +55,7 @@
     <script src="bower_components/blob/blob.js"></script>
     <script src="bower_components/FileSaver.js/FileSaver.js"></script>
     <script src="bower_components/canvas-toBlob.js/canvas-toBlob.js"></script>
+    <script src="bower_components/lokijs/src/lokijs.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -62,6 +66,10 @@
     <!-- inject:js -->
     <script src="main/main.js"></script>
     <script src="main/services/main-serv.js"></script>
+    <script src="main/services/cmsApi.js"></script>
+    <script src="main/services/cameraApi.js"></script>
+    <script src="main/lib/lokijs.js"></script>
+    <script src="main/lib/loki-angular.js"></script>
     <script src="main/lib/cordova-exif.js"></script>
     <script src="main/directives/image-onload-dir.js"></script>
     <script src="main/controllers/receipt-ctrl.js"></script>
@@ -72,6 +80,7 @@
     <script src="main/controllers/camera-ctrl.js"></script>
     <script src="main/controllers/barcode-scanner-ctrl.js"></script>
     <script src="main/constants/config-const.js"></script>
+    <script src="lib/loki-cordova-fs-adapter.js"></script>
     <script src="lib/ExifRestorer.js"></script>
     <script src="lib/exif.js"></script>
     <script src="app.js"></script>

@@ -12,3 +12,6 @@ app/bower_components
 **/exif.js
 **/ExifRestorer.js
 **/cordova-exif.js
+**/lokijs.js
+**/loki-angular.js
+**/loki-cordova-fs-adapter.js

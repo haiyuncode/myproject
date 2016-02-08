@@ -27,6 +27,9 @@
     <feature name="SQLitePlugin">
         <param name="android-package" value="io.liteglue.SQLitePlugin" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
     <allow-intent href="market:*" />
     <name>Test</name>
     <description>
@@ -35,8 +38,20 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
+    <allow-navigation href="cdn.contentful.com/*" />
+    <allow-navigation href="*://*.cdn.contentful.com/*" />
+    <allow-navigation href="http://cdn.contentful.com/spaces/wiydhpfvx7qb/entries/3NB130JtnWOOoogi6s4w6q?access_token=3e89ff15f153f0bf8a1b97818f32c5883f7f582a8be329fdbefde21ea375aaa7" />
+    <allow-navigation href="*" />
     <content src="index.html" />
+    <access origin="content:///*" />
     <access origin="*" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    <access origin="http://cdn.contentful.com" />
+    <access origin="https://cdn.contentful.com" />
+    <allow-intent href="https://cdn.contentful.com*" />
+    <allow-intent href="http://cdn.contentful.com*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

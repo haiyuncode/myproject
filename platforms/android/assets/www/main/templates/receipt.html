@@ -1,13 +1,27 @@
 <ion-view title="Recent Receipts">l
   <ion-content class="has-header padding">
-     <div  class="row">
-        <div class="col" ng-repeat="n in ctrl.url">
-            <img ng-src="{{n}}">
+     <!--<div  class="row">-->
+        <!--<div class="col" ng-repeat="n in ctrl.url">-->
+            <!--<img ng-src="{{n}}">-->
 
-        </div>
-     </div>
+        <!--</div>-->
+     <!--</div>-->
+
+    <div class="list">
+      <a class="item" ng-repeat="category in ctrl.categories">
+        {{category.text}}
+      </a>
+    </div>
+
+    <!--<div class="list">-->
+      <!--<a class="item" ng-repeat="category in ctrl.categoriesFromDB">-->
+        <!--{{category.text}}-->
+      <!--</a>-->
+    <!--</div>-->
 
     <pre>{{ctrl | json}}</pre>
+
+    <!--<pre>{{$scope.error | json}}</pre>-->
   </ion-content>
 </ion-view>
 

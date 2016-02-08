@@ -1,0 +1,25 @@
+<ion-view title="Database">
+  <ion-content>
+    <div class="row">
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.createTable()">Create Table</button>
+      </div>
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.insert()">Insert</button>
+      </div>
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.select()">Select</button>
+      </div>
+      <div class="col">
+        <button class="button  button-balanced" ng-click="ctrl.delete()">Delete</button>
+      </div>
+
+
+    </div>
+
+    <div class="card">
+      <pre>{{ctrl | json}}</pre>
+    </div>
+  </ion-content>
+
+</ion-view>

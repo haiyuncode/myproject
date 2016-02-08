@@ -72,6 +72,7 @@
 		CFCE841BD6224893ADC72FB9 /* Overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F105CD5F4F54B8489CDBA53 /* Overlay@2x.png */; };
 		5EFF3B657FF84AA18BC8BC70 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AD1E94572448218DFD2123 /* SQLitePlugin.m */; };
 		47903E00366349D49DF1B711 /* sqlite3.c in Resources */ = {isa = PBXBuildFile; fileRef = F8C8689E98464A2C80EDC817 /* sqlite3.c */; };
+		F8000696DF304DB4A9FC20FA /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FCD2276C9534E28ACDFFFD0 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,8 @@
 		F8C8689E98464A2C80EDC817 /* sqlite3.c */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "sqlite3.c"; path = "cordova-sqlite-storage/sqlite3.c"; sourceTree = "<group>"; fileEncoding = 4; };
 		EAA05B59F7884891B525DEC0 /* SQLitePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SQLitePlugin.h"; path = "cordova-sqlite-storage/SQLitePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		AA98E98ED7254095815196BE /* sqlite3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sqlite3.h"; path = "cordova-sqlite-storage/sqlite3.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		5FCD2276C9534E28ACDFFFD0 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		EEF825C6EC594B828A246DDD /* CDVInAppBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +352,8 @@
 				F8C8689E98464A2C80EDC817 /* sqlite3.c */,
 				EAA05B59F7884891B525DEC0 /* SQLitePlugin.h */,
 				AA98E98ED7254095815196BE /* sqlite3.h */,
+				5FCD2276C9534E28ACDFFFD0 /* CDVInAppBrowser.m */,
+				EEF825C6EC594B828A246DDD /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "Test/Plugins";
@@ -558,6 +563,7 @@
 				418075163B9942109C480576 /* ELCImagePickerController.m in Sources */,
 				5EFF3B657FF84AA18BC8BC70 /* SQLitePlugin.m in Sources */,
 				47903E00366349D49DF1B711 /* sqlite3.c in Resources */,
+				F8000696DF304DB4A9FC20FA /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
